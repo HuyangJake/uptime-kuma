@@ -1,0 +1,20 @@
+app = "jake-uptime-kuma"
+primary_region = "nrt"
+
+[build]
+  image = "louislam/uptime-kuma:2"
+
+[env]
+  TZ = "Asia/Tokyo"
+
+[http_service]
+  internal_port = 3001
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
+
+[[mounts]]
+  source = "uptime_data"
+  destination = "/app/data"
